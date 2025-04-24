@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "title": "welcome to the new blog",
+        "body":" the book description in june 1954 eighteen year old emmett watson is driven",
+        "likes":30
+    },
+    {
+        "id":2,
+        "title": "what is car",
+        "body":" the book description in june 1954 eighteen year old emmett watson is driven",
+        "likes":40
+    },
+    {
+        "id":3,
+        "title": "how to be a good programer",
+        "body":" the book description in june 1954 eighteen year old emmett watson is driven",
+        "likes":20
+    },
+    {
+        "id":4,
+        "title": "how to delete post",
+        "body":" the book description in june 1954 eighteen year old emmett watson is driven",
+        "likes":45
+    }
+]
