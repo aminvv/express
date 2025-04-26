@@ -2,6 +2,9 @@ const { default: camelcaseKey } = require("camelcase-keys")
 const express = require("express")
 const app = express()
 const morgan = require("morgan")
+const omitEmpty = require("omit-empty")
+app.use(express.json());
+app.use(express.urlencoded());
 //  const camelcaseKey= (...args) =>import("camelcase-keys").then(({default:camelcaseKeys})=>camelcase(...args))  ترفند
 
 // app.use(morgan('combined'))
@@ -19,12 +22,12 @@ const auth = (req, res, next) => {
    res.send("authentication is failed")
 }
 
-const camelcase=async(req,res,next)=>{
-req.body=await camelcaseKey(req.body,{deep:true})
-req.query=await camelcaseKey(req.query)
-req.params=await camelcaseKey(req.params)
+const camelcase = async (req, res, next) => {
+   req.body = await camelcaseKey(req.body, { deep: true })
+   req.query = await camelcaseKey(req.query)
+   req.params = await camelcaseKey(req.params)
 
-next()
+   next()
 }
 
 app.get("/middle", auth, (req, res) => {
@@ -33,11 +36,31 @@ app.get("/middle", auth, (req, res) => {
 app.use(camelcase)
 app.get("/camel", async (req, res) => {
    res.send({
-      body:req.body,
-      query:req.query,
-      params:req.params,
+      body: req.body,
+      query: req.query,
+      params: req.params,
    })
 })
+
+
+
+
+
+
+
+ function omitEmptyRemoveFiled(option={}){
+   return function(req,res,next){
+      req.body=omitEmpty(req.body,option)
+      next()
+   }
+ }
+
+
+app.post('/omit',omitEmptyRemoveFiled(),(req,res,next)=>{
+   res.send(req.body)
+})
+
+
 
 
 app.listen(3000, () => {
