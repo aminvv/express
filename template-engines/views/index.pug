@@ -6,10 +6,24 @@ html(lang="en")
         link(rel="stylesheet", href="/static/style.css")
         title Template Engine Pug
     body
-        div 
+        div      
         header.red 
             h2.green #{section}
             p.yellow Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique assumenda atque deserunt quo.
+        section 
+        each user in users 
+                 table(border="1")
+                        tr 
+                          td #{user.id}  
+                          td #{user.username}  
+
+        each num in [1,2,3,4,5,6,7,8,9]      
+                 p #{num} 
+
+        each value,key  in {A:1,B:2,C:3,E:4,D:5,H:6,F:7,G:8,K:9}      
+                 li #{key} : #{value}
+
+
         footer.green 
          h3.yellow FOOTER TEMPLATE
             p.yellow Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, ullam? .violet 

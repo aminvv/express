@@ -7,10 +7,27 @@ const { link } = require('fs');
  app.set("view engine","pug")
  app.set('views',path.join(__dirname,'views'))
 
+ users=[
+    {
+        id:1,
+        username:"amin"
+    },
+    {
+        id:2,
+        username:"ali"
+    },
+    {
+        id:3,
+        username:"vahid"
+    },
+]
+
+
 app.get('/',(req,res)=>{
     res.render("index",{
         link:"http://botostart.ir",
-        section:"this is my section"
+        section:"this is my section",
+        users
     })
 })
 
