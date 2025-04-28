@@ -2,6 +2,8 @@ const { ErrorHandler, NotfoundError } = require('./error-handler')
 const express = require('express');
 const app = express()
 const path = require("path")
+const hbs=require("hbs")
+hbs.registerPartials(path.join(__dirname,"views/partials"))
 app.use(express.static("public"))
 app.set("view engine", "hbs")
 app.set(path.join(__dirname, "views"))
