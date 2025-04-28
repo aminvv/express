@@ -4,9 +4,12 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="/static/style.css")
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
         title Template Engine Pug
     body
-        div      
+    include partials/_nav
+    
+        div.container      
         header.red 
             h2.green #{section}
             p.yellow Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique assumenda atque deserunt quo.
