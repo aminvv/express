@@ -1,24 +1,14 @@
  const {ErrorHandler,NotfoundError}=require('./error-handler')
  const express=require('express');
  const app=express()
+app.use(express.static("public"))
+app.set("view engine","ejs")
 
 
- users=[
-    {
-        id:1,
-        username:"amin"
-    },
-    {
-        id:2,
-        username:"ali"
-    },
-    {
-        id:3,
-        username:"vahid"
-    },
-]
 
-
+app.get("/",(req,res)=>{
+    res.render("index")
+})
 
 
 app.use(NotfoundError)
