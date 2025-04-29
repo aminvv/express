@@ -7,7 +7,10 @@ app.set("view engine","ejs")
 
 
 app.get("/",(req,res)=>{
-    res.render("index")
+    const blogs=require('./blogs.json')
+    res.render("index",{
+        blogs
+    })
 })
 
 
@@ -15,4 +18,4 @@ app.use(NotfoundError)
 app.use(ErrorHandler)
  app.listen(3000,()=>{
     console.log('http://localhost:3000');
- })
+ }) 

@@ -1,0 +1,29 @@
+[
+    {
+        "id":1,
+        "title":" design for everyone",
+        "author":"amin asadi",
+        "image":"assets/imgs/blog-1.jpg",
+        "likes":300000,
+        "comments":4500,
+        "text":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, distinctio."
+    },
+    {
+        "id":2,
+        "title":" web layouts",
+        "image":"assets/imgs/blog-2.jpg",
+        "author":"ali rezaie",
+        "likes":3000,
+        "comments":450,
+        "text":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, distinctio."
+    },
+    {
+        "id":3,
+        "title":" bootstrap framework",
+        "image":"assets/imgs/blog-3.jpg",
+        "author":"vahid nazari",
+        "likes":1000,
+        "comments":500,
+        "text":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, distinctio."
+    }
+]
