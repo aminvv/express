@@ -11,24 +11,11 @@ app.set(path.join(__dirname, "views"))
 
 
 
-users = [
-    {
-        id: 1,
-        username: "amin"
-    },
-    {
-        id: 2,
-        username: "ali"
-    },
-    {
-        id: 3,
-        username: "vahid"
-    },
-]
-
-
 app.get('/', (req, res) => {
-    res.render("index", {})
+    const blogs=require("./blogs.json")
+    res.render("index", {
+        blogs
+    })
 })
 
 
