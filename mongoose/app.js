@@ -26,6 +26,25 @@ app.post("/new", async (req, res) => {
 })
 
 
+app.post("/insert-many", async (req, res) => {
+    const newBlog = await blogModel.insertMany([
+        {
+            title:"dsfadfffffffffffffffdsddddddsf",
+            text:"fafsdghdjksghdfjkh"
+        },
+        {
+            title:"dsfarsdetrsdtfdfstgfsdgfffffffffffffffffffffffffffffffsf",
+            text:"fafsdghdjksghdfjkh"
+        },
+        {
+            title:"dsfafffffhhhhhhhhhhhhhhhhhhhhhhhhhhhhkkkkkkkkkkkkkdsf",
+            text:"fafsdghdjksghdfjkh"
+        },
+    ])
+    res.send(newBlog)
+})
+
+
 app.use(ErrorHandel)
 app.use(NotFoundError)
 app.listen(3000, () => {
