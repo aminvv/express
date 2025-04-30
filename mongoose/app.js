@@ -26,7 +26,7 @@ app.post("/new", async (req, res) => {
 })
 
 
-app.post("/insert-many", async (req, res) => {
+app.get("/insert-many", async (req, res) => {
     const newBlog = await blogModel.insertMany([
         {
             title:"dsfadfffffffffffffffdsddddddsf",
@@ -41,6 +41,13 @@ app.post("/insert-many", async (req, res) => {
             text:"fafsdghdjksghdfjkh"
         },
     ])
+    res.send(newBlog)
+})
+
+
+
+app.get("/find", async (req, res) => {
+    const newBlog = await blogModel.find()
     res.send(newBlog)
 })
 
