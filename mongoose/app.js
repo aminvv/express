@@ -86,6 +86,32 @@ app.patch("/update/:id", async (req, res) => {
 })
 
 
+app.patch("/update-one/:id", async (req, res) => {
+    const { id } = req.params
+    const newBodyObject = omitEmpty(req.body)
+    const blog = await blogModel.findOne({ _id: id })
+    if (!blog) throw {
+        status: 404,
+        message: " blog not found"
+    }
+    const result = await blogModel.updateOne({ _id: id },{$set:newBodyObject})
+    res.send(result)
+})
+app.patch("/find-and-update/:id", async (req, res) => {
+    const { id } = req.params
+    const newBodyObject = omitEmpty(req.body)
+    // const blog = await blogModel.findOne({ _id: id })
+    // if (!blog) throw {
+    //     status: 404,
+    //     message: " blog not found"
+    // }
+    // const result = await blogModel.updateOne({ _id: id },{$set:newBodyObject})
+
+    const blog=await blogModel.findOneAndUpdate({_id:id},{$set:newBodyObject})
+    res.send(blog) 
+})
+
+
 app.use(ErrorHandel)
 app.use(NotFoundError)
 app.listen(3000, () => {
