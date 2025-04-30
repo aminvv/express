@@ -16,6 +16,16 @@ app.post("/create", async (req, res) => {
 })
 
 
+app.post("/new", async (req, res) => {
+    const { title, text } = req.body
+    const newBlog = new  blogModel({
+        title, text
+    })
+    await newBlog.save()
+    res.send(newBlog)
+})
+
+
 app.use(ErrorHandel)
 app.use(NotFoundError)
 app.listen(3000, () => {
