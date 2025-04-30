@@ -3,6 +3,7 @@ const app = express()
 const { ErrorHandel, NotFoundError } = require('./utils/errorHandler')
 require('./config/mongoose.config')
 const { blogModel } = require('./model/blog.model')
+const { isValidObjectId } = require("mongoose")
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
@@ -26,7 +27,7 @@ app.post("/new", async (req, res) => {
 })
 
 
-app.get("/insert-many", async (req, res) => {
+app.delete("/insert-many", async (req, res) => {
     const newBlog = await blogModel.insertMany([
         {
             title:"dsfadfffffffffffffffdsddddddsf",
@@ -49,6 +50,23 @@ app.get("/insert-many", async (req, res) => {
 app.get("/find", async (req, res) => {
     const newBlog = await blogModel.find()
     res.send(newBlog)
+})
+
+app.get("/find-one/:id", async (req, res) => {
+    const{id}=req.params
+    if(!isValidObjectId(id)) throw {status:400 ,message:"your id is not valid id"}
+    const Blog = await blogModel.findOne({_id:id})
+    res.send(Blog)
+})
+app.delete("/delete-one/:id", async (req, res) => {
+    const{id}=req.params
+    if(!isValidObjectId(id)) throw {status:400 ,message:"your id is not valid id"}
+    const result = await blogModel.deleteOne({_id:id})
+    res.send(result)
+})
+app.delete("/delete-many", async (req, res) => {
+    const result = await blogModel.deleteMany()
+    res.send(result)
 })
 
 
