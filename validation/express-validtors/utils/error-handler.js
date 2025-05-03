@@ -1,5 +1,5 @@
  const NotfoundError=(req,res,next)=>{
-    return res.status(404).jason({
+    return res.status(404).json({
         statusCode:res.statusCode,
         error:{
             type:"Not Found",
