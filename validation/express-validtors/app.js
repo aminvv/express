@@ -2,6 +2,7 @@ const { ErrorHandler, NotfoundError } = require('./utils/error-handler')
 const express = require('express');
 const { loginValidator, registerValidator } = require('./validators/auth.validator');
 const { checkValidation } = require('./middleware/validator');
+const { idValidator } = require('./validators/param');
 
 const app = express()
 app.use(express.json())
@@ -16,6 +17,11 @@ app.post('/login', loginValidator(), checkValidation, (req, res) => {
 
 app.post('/register', registerValidator(), checkValidation, (req, res) => {
    res.send(req.body)
+})
+
+
+app.get('/param/:id', idValidator(), checkValidation, (req, res) => {
+   res.send(req.params)
 })
 
 app.use(NotfoundError)
