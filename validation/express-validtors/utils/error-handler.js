@@ -13,7 +13,8 @@
      return res.send({
         statusCode:res.statusCode || 500,
         error:{
-            message:(err.message|| "error server internal")
+            message:(err.message|| "error server internal"),
+            invalidParams:err.error
         }
      })
  }
