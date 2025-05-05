@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-validation": "^4.1.1",
+    "express-validator": "^7.2.1",
+    "init": "^0.1.2",
+    "nodemon": "^3.1.10"
+  }
+}
