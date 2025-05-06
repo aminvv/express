@@ -1,3 +1,5 @@
+const validationMapper = require("./express-validation-mapper")
+
  const NotfoundError=(req,res,next)=>{
     return res.status(404).json({
         statusCode:res.statusCode,
@@ -10,13 +12,13 @@
 
 
  const ErrorHandler=(err,req,res,next)=>{
-    console.error("❌ Validation Error:", JSON.stringify(err, null, 4))
+
     
      return res.send({
-        statusCode:res.statusCode || 500,
+        statusCode:res.statusCode || err.statusCode|| 500,
         error:{
             message:(err.message|| "error server internal"),
-            invalidParams:err.error
+            invalidParams:validationMapper(err)
         }
      })
  }
