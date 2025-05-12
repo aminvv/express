@@ -11,7 +11,7 @@
 
 
  const ErrorHandler=(err,req,res,next)=>{
-
+console.log(err);
 
      return res.send({
         statusCode:res.statusCode || err.statusCode|| 500,

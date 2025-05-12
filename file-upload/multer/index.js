@@ -7,9 +7,9 @@ app.use(express.static('public'))
 
 const{ErrorHandler,NotfoundError}=require('./utils/error-handler')
 
-app.post('/upload', uploadFile.single('image'), (req, res) => {
-    console.log(req.file.size);
-    res.send(req.file)
+app.post('/upload', uploadFile.array('image',2), (req, res) => {
+    console.log(req.files.size);
+    res.send(req.files)
 })
 
 app.use(ErrorHandler)

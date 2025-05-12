@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 })
 
 
-const _150KB=150000
+const _150KB=7500000
 const uploadFile = multer({
     storage,
     limits: {
