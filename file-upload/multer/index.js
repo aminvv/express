@@ -11,6 +11,21 @@ app.post('/upload', uploadFile.array('image',2), (req, res) => {
     console.log(req.files.size);
     res.send(req.files)
 })
+app.post('/fields', uploadFile.fields([
+    {name:'image',maxCount:2},
+    {name:'file',maxCount:1}
+]), (req, res) => {
+    console.log(req.files.size);
+    res.send(req.files)
+})
+
+app.post('/any', uploadFile.any(), (req, res) => {
+    console.log(req.files.size);
+    res.send(req.files)
+})
+app.post('/none', uploadFile.none(), (req, res) => {
+    res.send(req.body)
+})
 
 app.use(ErrorHandler)
 app.use(NotfoundError)

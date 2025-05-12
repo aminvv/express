@@ -12,7 +12,8 @@ const storage = multer.diskStorage({
 
         const ext = path.extname(file.originalname)
         const witeListFormat = ['.jpg', 'jpeg', '.png', 'webp']
-        if (witeListFormat.includes(ext)) {
+        const witeListMinType = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp']
+        if (witeListMinType.includes(file.mimetype)) {
             const filename = Date.now() + ext
             callB(null, filename)
         } else {
