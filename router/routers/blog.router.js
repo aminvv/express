@@ -1,23 +1,15 @@
  const {Router}=require('express')
+const { BlogController } = require('../controllers/blog.controller')
  const router=Router()
 
+ const blogController=new BlogController()
 
- router.get('/',(req,res)=>{
-   console.log(req.time);
- res.send("blogs")
- })
- router.post('/',(req,res)=>{
-   console.log(req.time);
- res.send("create new  blog")
- })
- router.delete('/:id',(req,res)=>{
-   console.log(req.time);
- res.send(`delete blog by id # ${req.params.id}`)
- })
- router.patch('/:id',(req,res)=>{
-   console.log(req.time);
- res.send(`update blog by id # ${req.params.id}`)
- })
+ 
+ router.get('/',blogController.getBlog)
+ router.post('/',blogController.createBlog)
+ router.delete('/:id',blogController.deleteBlog)
+ router.patch('/:id',blogController.updateBlog)
+
 
 
 
