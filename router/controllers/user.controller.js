@@ -1,7 +1,6 @@
 
 
 
-
  const getUser=(req,res)=>{
  console.log(req.time);
  res.send("users")
