@@ -1,5 +1,5 @@
 const express=require('express');
-const { allRouter } = require('./router');
+const { allRouter } = require('./routers');
 const app=express()
 app.use(allRouter)
 
