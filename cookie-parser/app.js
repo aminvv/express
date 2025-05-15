@@ -5,7 +5,7 @@ const express=require('express')
 const cookieParser=require('cookie-parser')
 const app=express()
 
-app.use(cookieParser())
+app.use(cookieParser('jsdhfhkjdgsfkhjghjgajfhkljadhsjhfjhckjghadfjkshgjklads'))
 
 
 app.get('/set-cookie',(req,res)=>{
@@ -14,6 +14,9 @@ app.get('/set-cookie',(req,res)=>{
     })
     res.cookie('cookie--python','cookie--value----python',{
         maxAge:5000,
+        httpOnly:true,
+        signed:true,
+        secure:true
     })
     res.send('cookie set successfully')
 })
