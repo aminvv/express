@@ -2,6 +2,8 @@
 
 
 const crypto = require('crypto')
+const sha1 = require('sha1')
+const md5 = require('md5')
 const bcrypt = require("bcrypt")
 
 
@@ -41,7 +43,7 @@ console.log('hashed :2', hashed_two);
 
 //  create hashed ------  3
 
-
+ 
 // const secret="sdjfhjhadsghgfjkljadskljhfgjkadshjfhjadsh"
 // or
 const secret = crypto.randomBytes(16).toString('hex')
@@ -68,3 +70,12 @@ function verifyPassword(password, hash) {
 
 const hash = hashPassword('123456')
 console.log("hash with bcrypt",verifyPassword('123456', hash)); 
+
+
+
+
+
+// ------------------ hash with package ((sha1--- md5))
+
+console.log('sha1:',sha1("message"));
+console.log('md5:',md5("message"));
