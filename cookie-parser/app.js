@@ -4,7 +4,8 @@
 const express=require('express')
 const cookieParser=require('cookie-parser')
 const app=express()
-
+const dotenv=require('dotenv')
+dotenv.config()
 app.use(cookieParser('jsdhfhkjdgsfkhjghjgajfhkljadhsjhfjhckjghadfjkshgjklads'))
 
 
@@ -22,7 +23,7 @@ app.get('/set-cookie',(req,res)=>{
     res.send('cookie set successfully')
 })
 app.get('/get-cookie',(req,res)=>{
-    res.send(req.cookies.name)
+    res.send(req.cookies)
 })
 
 app.get('/clear-cookie',(req,res)=>{
@@ -30,6 +31,7 @@ app.get('/clear-cookie',(req,res)=>{
     res.send('clear cookie successfully')
 })
 
-app.listen(3000,()=>{
-    console.log('http://localhost:3000');
+const  PORT=process.env.PORT
+app.listen(PORT,()=>{
+    console.log(`http://localhost:${PORT}`);
 })
