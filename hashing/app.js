@@ -5,7 +5,8 @@ const crypto = require('crypto')
 const sha1 = require('sha1')
 const md5 = require('md5')
 const bcrypt = require("bcrypt")
-
+const fs=require('fs')
+const filename='./index.txt'
 
 
 function hashPassword(password) {
@@ -77,5 +78,32 @@ console.log("hash with bcrypt",verifyPassword('123456', hash));
 
 // ------------------ hash with package ((sha1--- md5))
 
+
 console.log('sha1:',sha1("message"));
 console.log('md5:',md5("message"));
+
+
+
+
+
+
+// ------------------ hash file ((createhash-- & -- md5))
+const createHashMD5=crypto.createHash('md5')
+const stream=fs.ReadStream(filename)
+let md5Result=''
+
+stream.on('data',(data)=>{
+    createHashMD5.update(data)
+    md5Result+=md5(data)
+})
+
+stream.on('end',()=>{
+    const hash=createHashMD5.digest('hex')
+    fs.writeFile('hash.txt',hash,(err)=>{
+        if(err){console.log(err);}
+    })
+    fs.writeFile('hash1.txt',md5Result,(err)=>{
+        if(err){console.log(err);}
+    })
+})
+
