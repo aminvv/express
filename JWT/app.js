@@ -62,3 +62,6 @@ const basic64Data=Buffer.from(usernamePassword).toString('base64')
 const decodeData=Buffer.from(basic64Data,'base64').toString('ascii')
 const [username,password]=decodeData.split('/')
 console.log(username,password);
+
+
+ strategy

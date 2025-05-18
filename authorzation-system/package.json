@@ -1,0 +1,18 @@
+{
+  "name": "authorzation-system",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.15.0",
+    "mongose": "^0.0.2-security",
+    "nodemon": "^3.1.10"
+  }
+}
