@@ -6,7 +6,7 @@ const privateKey=fs.readFileSync('./privateKey.key')
 const tokenHS512 = jwt.sign({ id: 'sayMyname', email: 'amin@gmail.com' },
     "dskfhdskljahg;adlshfdslijuhksdf;lkjkljDSSFL:k",
     {
-        expiresIn: '2s',
+        expiresIn: '20s',
     }
 )
 console.log('TOKEN HS512=========>>>>>>',tokenHS512);
@@ -47,5 +47,18 @@ setTimeout(()=>{
     const tokenDecode = jwt.decode(tokenHS512,)
 
 console.log('TOKEN decode =========>>>>>>',tokenDecode );
-},3000)
+},)
  
+
+
+
+
+// basic ------------------------------------------------------------------------------------
+
+
+
+const usernamePassword='aminasadi/123456'
+const basic64Data=Buffer.from(usernamePassword).toString('base64')
+const decodeData=Buffer.from(basic64Data,'base64').toString('ascii')
+const [username,password]=decodeData.split('/')
+console.log(username,password);
