@@ -1,5 +1,5 @@
 const { userModel } = require("../model/user")
-const { hashPassword } = require("../utils/auth.util")
+const { hashPassword, signToken } = require("../utils/auth.util")
 
 
 async function register(req, res, next) {
@@ -8,9 +8,9 @@ async function register(req, res, next) {
         const user = await userModel.create({
             fullName,
             email,
-            password:hashPassword(password)
+            password: hashPassword(password)
         })
-        res.send(user)
+        res.send({user,  message: " register successfully" })
     } catch (error) {
         next(error)
     }
@@ -18,8 +18,18 @@ async function register(req, res, next) {
 
 
 
-function login(req, res) {
-    res.send(" login successfully")
+async function login(req, res, next) {
+    try {
+        const { email, password } = req.body
+        const user = await userModel.findOne({ email })
+        if (!user) {
+            throw ({ status: 404, message: "user not found" })
+        }
+        const token = signToken({ id: user._id, email: user.email })
+        res.send({token, message: " login successfully" })
+    } catch (error) {
+        next(error)
+    }
 }
 
 
