@@ -21,11 +21,17 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs');
 app.set('layout', './layout/main.ejs');
 // Set up session
-
+app.use(session({
+  secret: "secret key",
+  resave: false,
+  saveUninitialized: false,
+}));
 // Set up Passport
-
+passportInit(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 //Routers
-
+app.use(AllRouters(passport))
 app.use(notFoundError);
 app.use(errorHandler);
 const PORT = process.env.PORT || 3000;
